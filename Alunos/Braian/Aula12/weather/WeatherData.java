@@ -1,4 +1,4 @@
-package Alunos.Braian.Aula12;
+package Alunos.Braian.Aula12.weather;
 
 public class WeatherData {
   private final String city;

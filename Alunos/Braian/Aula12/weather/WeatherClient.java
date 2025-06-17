@@ -88,20 +88,12 @@ public class WeatherClient {
         }
 
         switch (responseCode) {
-            case 400:
-                throw new IOException("Cidade inválida ou não encontrada.");
-            case 401:
-                throw new IOException("Chave da API inválida ou não autorizada.");
-            case 403:
-                throw new IOException("Acesso proibido. Verifique sua conta ou chave.");
-            case 429:
-                throw new IOException("Limite de requisições atingido. Aguarde ou verifique seu plano.");
-            case 500:
-            case 502:
-            case 503:
-                throw new IOException("Erro interno no servidor da API. Tente novamente mais tarde.");
-            default:
-                throw new IOException("Erro inesperado. Código HTTP: " + responseCode + ". Detalhes: " + errorResponse);
+            case 400 -> throw new IOException("Cidade inválida ou não encontrada.");
+            case 401 -> throw new IOException("Chave da API inválida ou não autorizada.");
+            case 403 -> throw new IOException("Acesso proibido. Verifique sua conta ou chave.");
+            case 429 -> throw new IOException("Limite de requisições atingido. Aguarde ou verifique seu plano.");
+            case 500, 502, 503 -> throw new IOException("Erro interno no servidor da API. Tente novamente mais tarde.");
+            default -> throw new IOException("Erro inesperado. Código HTTP: " + responseCode + ". Detalhes: " + errorResponse);
         }
     }
 

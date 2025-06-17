@@ -24,10 +24,7 @@ public class WeatherApp {
                 String opcao = scanner.nextLine().trim();
 
                 switch (opcao) {
-                    case "1":
-                    case "2":
-                    case "3":
-                    case "4":
+                    case "1", "2", "3", "4" -> {
                         System.out.print("Digite o nome da cidade: ");
                         String cidade = scanner.nextLine().trim();
 
@@ -40,35 +37,23 @@ public class WeatherApp {
                             WeatherData data = client.getWeather(cidade);
 
                             switch (opcao) {
-                                case "1":
-                                    System.out.println(data);
-                                    break;
-                                case "2":
+                                case "1" -> System.out.println(data);
+                                case "2" -> {
                                     System.out.printf("Temperatura atual em %s: %.1f°C\n", cidade, data.getTemp());
                                     System.out.printf("Máxima: %.1f°C | 🔻 Mínima: %.1f°C\n", data.getTempMax(), data.getTempMin());
-                                    break;
-                                case "3":
-                                    System.out.printf("Umidade do ar em %s: %.1f%%\n", cidade, data.getHumidity());
-                                    break;
-                                case "4":
-                                    System.out.printf("Condição do tempo em %s: %s\n", cidade, data.getConditions());
-                                    break;
+                                }
+                                case "3" -> System.out.printf("Umidade do ar em %s: %.1f%%\n", cidade, data.getHumidity());
+                                case "4" -> System.out.printf("Condição do tempo em %s: %s\n", cidade, data.getConditions());
                             }
                         } catch (IllegalArgumentException e) {
                             System.out.println("Entrada inválida: " + e.getMessage());
-                        } catch (IOException e) {
-                            System.out.println("Erro de conexão ou requisição: " + e.getMessage());
                         }
-                        break;
-
-                    case "5":
+                    }
+                    case "5" -> {
                         System.out.println("Encerrando o programa.");
                         executando = false;
-                        break;
-
-                    default:
-                        System.out.println("Opção inválida. Escolha um número de 1 a 5.");
-                        break;
+                    }
+                    default -> System.out.println("Opção inválida. Escolha um número de 1 a 5.");
                 }
             }
         }

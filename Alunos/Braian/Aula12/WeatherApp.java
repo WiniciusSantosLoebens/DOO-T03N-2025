@@ -1,4 +1,4 @@
-package com.example.weather;
+package Alunos.Braian.Aula12;
 
 import java.io.IOException;
 import java.util.Scanner;

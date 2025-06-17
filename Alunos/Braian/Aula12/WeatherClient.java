@@ -1,4 +1,4 @@
-package com.example.weather;
+package Alunos.Braian.Aula12;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class WeatherClient {
 
-    private static final String API_KEY = "NNSK473GK6H78YL4R7BKBTN5A"; // Coloque sua chave
+    private static final String API_KEY = "NNSK473GK6H78YL4R7BKBTN5A";
 
     public WeatherData getWeather(String city) throws IOException {
         if (city == null || city.trim().isEmpty()) {
@@ -34,8 +34,8 @@ public class WeatherClient {
             URL url = new URL(urlString);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);  // 5 segundos para conexão
-            connection.setReadTimeout(5000);     // 5 segundos para leitura
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
 
             int responseCode = connection.getResponseCode();
 
@@ -43,14 +43,14 @@ public class WeatherClient {
                 handleErrorResponse(responseCode, connection);
             }
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                response.append(line);
+            StringBuilder response;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
             }
-            reader.close();
 
             JSONObject json = new JSONObject(response.toString());
             JSONObject day = json.getJSONArray("days").getJSONObject(0);
@@ -78,14 +78,14 @@ public class WeatherClient {
     }
 
     private void handleErrorResponse(int responseCode, HttpURLConnection connection) throws IOException {
-        BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-        StringBuilder errorResponse = new StringBuilder();
-        String errorLine;
-
-        while ((errorLine = errorReader.readLine()) != null) {
-            errorResponse.append(errorLine);
+        StringBuilder errorResponse;
+        try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+            errorResponse = new StringBuilder();
+            String errorLine;
+            while ((errorLine = errorReader.readLine()) != null) {
+                errorResponse.append(errorLine);
+            }
         }
-        errorReader.close();
 
         switch (responseCode) {
             case 400:
@@ -106,7 +106,6 @@ public class WeatherClient {
     }
 
     private boolean isValidCityFormat(String city) {
-        // Permite letras, espaços e acentos. Proíbe números e caracteres especiais.
         String regex = "^[\\p{L}\\s]+$";
         return Pattern.matches(regex, city.trim());
     }

@@ -1,4 +1,4 @@
-package Alunos.Braian.Aula12.weather;
+package Alunos.Braian.Aula12;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +11,8 @@ import java.net.UnknownHostException;
 import java.util.regex.Pattern;
 
 import org.json.JSONObject;
+
+import Alunos.Braian.Aula12.weather.WeatherData;
 
 public class WeatherClient {
 

@@ -1,7 +1,9 @@
-package Alunos.Braian.Aula12.weather;
+package Alunos.Braian.Aula12;
 
-import java.io.IOException;
 import java.util.Scanner;
+
+import Alunos.Braian.Aula12.weather.WeatherClient;
+import Alunos.Braian.Aula12.weather.WeatherData;
 
 public class WeatherApp {
     public static void main(String[] args) {

@@ -1,4 +1,3 @@
-// Classe para representar os dados do clima atual
 
 public class Clima {
     private String cidade;

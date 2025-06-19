@@ -1,4 +1,3 @@
-// Classe para representar os dados do clima de um dia
 
 public class ClimaDia {
     private String data;

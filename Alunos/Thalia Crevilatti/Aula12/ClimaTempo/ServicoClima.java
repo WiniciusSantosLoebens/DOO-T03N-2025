@@ -5,8 +5,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
-// Classe para buscar dados do clima usando a API Visual Crossing com a Key
-
 public class ServicoClima {
     private static final String API_KEY = "BRC2QSUZJGDF3ZPQ7CJ9K2XJC";
     private final HttpClient httpClient; 

@@ -1,7 +1,5 @@
 import com.google.gson.*;
 
-// Classe para representar os dados do clima de um dia
-
 public class ClimaParser {
     public static ClimaDia parse(String json) {
         JsonObject raiz = JsonParser.parseString(json).getAsJsonObject();

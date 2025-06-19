@@ -3,7 +3,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;   
 import java.net.http.HttpResponse;
 
-// Classe que faz uma requisição HTTP para a API TVmaze e exibe o resultado (REQUESTA HTTP)
+// Classe que faz uma requisição HTTP para a API do TVmaze
 
 public class HttpClienteMave {
       public static void main(String[] args) throws Exception {

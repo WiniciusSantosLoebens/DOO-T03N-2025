@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Classe principal que gerencia o sistema de séries 
+// Classe que gerencia o gerenciamento de séries
 
 public class GerenciamentoSeries {
     public static void main(String[] args) {

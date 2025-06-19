@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Objects;
 
-// Classe da qual o usuário pode buscar informações sobre séries
+// Classe que representa uma série de TV
 
 public class Serie {
     private String nome;

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-// Classe que representa um usuário do sistema, contendo suas listas de séries e métodos
+// Classe que representa um usuário do sistema de gerenciamento de séries
 
 public class Usuario {
     private String nome;

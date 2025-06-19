@@ -2,7 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.*;
 
-// Classe responsável por gerenciar a leitura e escrita de usuários em um arquivo JSON
+// Classe que gerencia o salvamento e carregamento de usuários em um arquivo JSON
 
 public class JsonManager {
     private static final String CAMINHO_ARQUIVO = "usuario.json";

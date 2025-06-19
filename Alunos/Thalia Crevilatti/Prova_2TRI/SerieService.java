@@ -6,7 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-// Classe responsável por buscar informações sobre séries na API TVmaze
+// Classe que busca informações de séries na API TVmaze
 
 public class SerieService {
 

@@ -1,4 +1,4 @@
-package lojinha;
+package aula02;
 
 import java.util.Scanner;
 

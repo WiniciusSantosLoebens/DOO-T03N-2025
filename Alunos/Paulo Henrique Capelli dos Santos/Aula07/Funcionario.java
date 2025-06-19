@@ -1,0 +1,30 @@
+
+import java.util.*;
+;
+public abstract class Funcionario {;
+ protected String nome;
+ protected int idade;
+ protected String loja;
+ protected Endereco endereco;
+ protected double salarioBase;
+ protected List<Double> salarioRecebido;
+;
+ public Funcionario(String nome, int idade, String loja, Endereco endereco, double salarioBase) {;
+ this.nome = nome;
+ this.idade = idade;
+ this.loja = loja;
+ this.endereco = endereco;
+ this.salarioBase = salarioBase;
+ this.salarioRecebido = Arrays.asList(salarioBase, salarioBase + 100, salarioBase + 50);
+ };
+;
+ public void apresentarse() {;
+ System.out.println("Funcionário: " + nome + " | Idade: " + idade + " | Loja: " + loja);
+ };
+;
+ public double calcularMedia() {;
+ return salarioRecebido.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+ };
+;
+ public abstract double calcularBonus();
+}

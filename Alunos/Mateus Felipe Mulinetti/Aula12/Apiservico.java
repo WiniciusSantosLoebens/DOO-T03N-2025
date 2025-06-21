@@ -11,7 +11,8 @@ import java.net.http.HttpResponse;
 
 public class Apiservico {
 
-    public static final String API_KEY = "9B8GN3S2KNTVDLXG9V45KFP9V";
+    //git da restições se adicionar senhas
+    public static final String API_KEY = "";
 
     public Tempo getTempo(String nomeCidade) throws IOException, InterruptedException {
         try {

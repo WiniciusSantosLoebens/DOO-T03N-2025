@@ -17,7 +17,6 @@ public class DataManager {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    // Método para salvar os dados
     public void saveData(AppData data) {
         try {
             objectMapper.writeValue(new File(DATA_FILE), data);
@@ -27,8 +26,6 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
-    // Método para carregar os dados
     public AppData loadData() {
         File file = new File(DATA_FILE);
         if (file.exists() && file.length() > 0) {

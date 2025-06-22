@@ -41,8 +41,7 @@ public class SeriesMapper {
             }
             return seriesEncontradas;
         } catch (Exception e) {
-            System.err.println("Erro ao processar JSON ou mapear série: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("Erro ao processar JSON ou mapear série.");
             return new ArrayList<>();
         }
     }

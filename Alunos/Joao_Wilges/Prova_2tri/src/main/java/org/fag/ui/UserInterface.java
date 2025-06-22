@@ -22,7 +22,7 @@ public class UserInterface {
     private final WatchedManager watched;
     private final WatchlistManager watchlist;
     private final Scanner scanner;
-    private String userName; // Adicionado: atributo para armazenar o nome do usuário
+    private String userName;
 
     public String titulo =
             " _____      _       ____   _____   _   _        \n" +
@@ -39,18 +39,15 @@ public class UserInterface {
         this.scanner = new Scanner(System.in);
     }
 
-    // Adicionado: Getter para o nome do usuário (usado pelo Main para salvar)
     public String getUserName() {
         return userName;
     }
 
-    // Adicionado: Setter para o nome do usuário (usado pelo Main para carregar)
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
     private void displayMenu(){
-        // Removido o prompt de "Bem-vindo" daqui. Será no método start().
         System.out.println(titulo);
         System.out.println("\n--- Gerenciador de Séries ---");
         System.out.println("[1] - Buscar séries");
@@ -78,7 +75,6 @@ public class UserInterface {
 
         try {
             serieName = serieName.replaceAll("[^\\p{L}\\p{N}\\s]", "");
-            // Correção: URLEncoder.encode espera um String para o charset
             String encodedSerieName = URLEncoder.encode(serieName, StandardCharsets.UTF_8.toString());
             String apiURL = "https://api.tvmaze.com/search/shows?q=" + encodedSerieName;
             String jsonResponse = ApiClient.searchSeriesByName(apiURL);
@@ -88,7 +84,6 @@ public class UserInterface {
                 return Collections.emptyList();
             } else {
                 System.out.println("\nSéries encontradas:");
-                // Melhorando a exibição para a que mostrava ID e data de estreia
                 for (int i = 0; i < foundSeries.size(); i++) {
                     Serie s = foundSeries.get(i);
                     System.out.println((i + 1) + ". " + s.getNome() + " (ID: " + s.getId() + ") - " + s.getDataEstreia());
@@ -123,11 +118,6 @@ public class UserInterface {
     }
 
     private void manageSerieList(List<Serie> seriesContext, SerieListManagers manager) {
-        // A opção 1 "Adicionar série (dos resultados da busca)" usa 'seriesContext'.
-        // Se 'seriesContext' veio de uma busca, ela funcionará.
-        // Se 'seriesContext' for a própria lista do manager (opções 2,3,4 do menu principal),
-        // essa opção ainda funciona, permitindo adicionar da lista atual para ela mesma (sem efeito)
-        // ou adicionar uma série que o usuário encontre o ID nela.
         System.out.println("\n--- Gerenciar Séries ---");
         System.out.println("[1] - Adicionar série (dos resultados da busca)");
         System.out.println("[2] - Remover série da lista (por ID)");
@@ -174,7 +164,6 @@ public class UserInterface {
     }
 
     public void start() {
-        // Mover a lógica de pedir o nome do usuário para cá, para que seja feita apenas uma vez
         if (this.userName == null || this.userName.isEmpty()) {
             System.out.print("Bem-vindo! Por favor, digite seu nome: ");
             this.userName = scanner.nextLine();
@@ -183,11 +172,11 @@ public class UserInterface {
 
         int choice;
         do {
-            displayMenu(); // Agora displayMenu() apenas mostra as opções
+            displayMenu();
             choice = getUserChoice();
 
             switch (choice) {
-                case 1 -> { // Buscar séries
+                case 1 -> {
                     List<Serie> searchResults = serieSearch();
                     if (!searchResults.isEmpty()) {
                         System.out.println("\nSéries encontradas. O que deseja fazer?");
@@ -217,15 +206,15 @@ public class UserInterface {
 
                     }
                 }
-                case 2 -> { // Gerenciar Favoritas
+                case 2 -> {
                     favorites.showSerieList();
                     manageSerieList(favorites.getSerieList(), favorites);
                 }
-                case 3 -> { // Gerenciar Vistas
+                case 3 -> {
                     watched.showSerieList();
                     manageSerieList(watched.getSerieList(), watched);
                 }
-                case 4 -> { // Gerenciar Para Ver Depois
+                case 4 -> {
                     watchlist.showSerieList();
                     manageSerieList(watchlist.getSerieList(), watchlist);
                 }

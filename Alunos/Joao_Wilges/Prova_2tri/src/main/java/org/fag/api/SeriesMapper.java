@@ -12,11 +12,11 @@ import java.util.List;
 
 public class SeriesMapper {
 
-    public List<Serie> mapJsonToSeriesList(ApiClient resposta) {
+    public List<Serie> mapJsonToSeriesList(String jsonResponse) {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Serie> seriesEncontradas = new ArrayList<>();
         try {
-            JsonNode jsonObject = objectMapper.readTree(resposta.getJsonData());
+            JsonNode jsonObject = objectMapper.readTree(jsonResponse);
             if (jsonObject.isArray()) {
                 for (JsonNode itemNode : jsonObject) {
                     JsonNode showNode = itemNode.get("show");
@@ -38,13 +38,12 @@ public class SeriesMapper {
                 }
             } else {
                 System.out.println("A resposta da API não é um array de resultados de busca.");
-                // Em um sistema real, você poderia lançar uma exceção de negócio aqui
             }
-            return seriesEncontradas; // Retorna a lista populada
-        } catch (Exception e) { // Captura JsonProcessingException e outras Exceptions que possam surgir
+            return seriesEncontradas;
+        } catch (Exception e) {
             System.err.println("Erro ao processar JSON ou mapear série: " + e.getMessage());
-            e.printStackTrace(); // Para depuração
-            return new ArrayList<>(); // Em caso de erro, retorna uma lista vazia ou lança uma exceção de negócio
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 

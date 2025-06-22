@@ -53,8 +53,8 @@ public class Serie {
     @Override
     public String toString() {
         return String.format(
-                "Serie { Nome='%s'; Idioma='%s'; Generos='%s'; Nota Geral='%s'; Estado='%s'; Data Estreia='%s'; Data Termino='%s'; Emissora='%s' }",
-                nome, idioma, generos, nota_geral, estado, data_estreia, data_termino, nome_emissora
+                "ID: '%s; Nome='%s'; Idioma='%s'; Generos='%s'; Nota Geral='%s'; Estado='%s'; Data Estreia='%s'; Data Termino='%s'; Emissora='%s' }",
+                id, nome, idioma, generos, nota_geral, estado, data_estreia, data_termino, nome_emissora
         );
     }
 }

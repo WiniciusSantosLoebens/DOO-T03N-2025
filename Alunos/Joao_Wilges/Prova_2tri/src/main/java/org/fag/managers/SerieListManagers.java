@@ -43,6 +43,9 @@ public abstract class SerieListManagers {
     public void orderByPremiered(){
         SeriePremieredComparator premieredComparator = new SeriePremieredComparator();
         this.serieList.sort(premieredComparator);
+    }
 
+    public List<Serie> getSerieList() {
+        return serieList;
     }
 }

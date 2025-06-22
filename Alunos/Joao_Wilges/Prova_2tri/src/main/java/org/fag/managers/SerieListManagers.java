@@ -21,6 +21,10 @@ public abstract class SerieListManagers {
     }
 
     public void showSerieList(){
+        if (serieList.isEmpty()) {
+            System.out.println("A lista está vazia.");
+            return;
+        }
         for(Serie serie: serieList){
             System.out.println(serie.toString());
         }
@@ -30,6 +34,7 @@ public abstract class SerieListManagers {
         SerieNameComparator nameComparator = new SerieNameComparator();
         this.serieList.sort(nameComparator);
     }
+
     public void orderByRating(){
         SerieRatingComparator ratingComparator = new SerieRatingComparator();
         this.serieList.sort(ratingComparator);
@@ -38,14 +43,18 @@ public abstract class SerieListManagers {
     public void orderByStatus(){
         SerieStatusComparator statusComparator = new SerieStatusComparator();
         this.serieList.sort(statusComparator);
-
     }
+
     public void orderByPremiered(){
         SeriePremieredComparator premieredComparator = new SeriePremieredComparator();
         this.serieList.sort(premieredComparator);
     }
 
     public List<Serie> getSerieList() {
-        return serieList;
+        return new ArrayList<>(this.serieList);
+    }
+
+    public void setSerieList(List<Serie> serieList) {
+        this.serieList = new ArrayList<>(serieList);
     }
 }

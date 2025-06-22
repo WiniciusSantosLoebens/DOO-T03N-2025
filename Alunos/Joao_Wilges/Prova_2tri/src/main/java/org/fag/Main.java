@@ -1,7 +1,9 @@
-package org.fag; // Assuming this is your base package
+package org.fag;
 
 import org.fag.api.ApiClient;
 import org.fag.api.SeriesMapper;
+import org.fag.data.AppData;
+import org.fag.data.DataManager;
 import org.fag.managers.FavoritesManager;
 import org.fag.managers.WatchedManager;
 import org.fag.managers.WatchlistManager;
@@ -9,15 +11,20 @@ import org.fag.ui.UserInterface;
 
 public class Main {
     public static void main(String[] args) {
-        // Initialize core components
+        DataManager dataManager = new DataManager();
+        AppData appData = dataManager.loadData();
+
         SeriesMapper seriesMapper = new SeriesMapper();
 
-        // Initialize list managers
         FavoritesManager favoritesManager = new FavoritesManager();
-        WatchedManager watchedManager = new WatchedManager();
-        WatchlistManager watchlistManager = new WatchlistManager();
+        favoritesManager.setSerieList(appData.getFavorites());
 
-        // Initialize the UserInterface, passing all dependencies
+        WatchedManager watchedManager = new WatchedManager();
+        watchedManager.setSerieList(appData.getWatched());
+
+        WatchlistManager watchlistManager = new WatchlistManager();
+        watchlistManager.setSerieList(appData.getWatchlist());
+
         UserInterface userInterface = new UserInterface(
                 seriesMapper,
                 favoritesManager,
@@ -25,7 +32,17 @@ public class Main {
                 watchlistManager
         );
 
-        // Start the application's user interface
+        userInterface.setUserName(appData.getUserName());
+
         userInterface.start();
+
+        appData = new AppData(
+                userInterface.getUserName(),
+                favoritesManager.getSerieList(),
+                watchedManager.getSerieList(),
+                watchlistManager.getSerieList()
+        );
+
+        dataManager.saveData(appData);
     }
 }

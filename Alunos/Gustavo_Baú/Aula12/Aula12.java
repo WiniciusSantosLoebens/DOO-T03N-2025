@@ -1,4 +1,4 @@
-package Alunos.Gustavo_Baú;
+package Alunos.Gustavo_Baú.Aula12;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

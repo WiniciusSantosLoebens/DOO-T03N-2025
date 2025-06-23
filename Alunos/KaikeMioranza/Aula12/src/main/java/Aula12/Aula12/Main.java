@@ -1,6 +1,8 @@
 package Aula12.Aula12;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import Aula12.model.Clima;
+import Aula12.model.Dia;
+import Aula12.model.Hora;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.FileInputStream;
@@ -15,31 +17,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class Main{
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Clima {
-        public int queryCost;
-        public double latitude;
-        public double longitude;
-        public String resolvedAddress;
-        public String address;
-        public String timezone;
-        public double tzoffset;
-        public String description;
-        public List<Dia> days;
-    }
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Dia {
-        public List<Hora> hours;
-    }
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Hora {
-        public double temp;
-        public double humidity;
-        public double precipprob;
-        public double windspeed;
-        public double winddir;
-        public String conditions;
-    }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -83,21 +61,24 @@ public class Main{
                             Clima clima = mapper.readValue(json, Clima.class);
 
                             List<Hora> horas = clima.days.get(0).hours;
+                            Dia diaAtual = clima.days.get(0);
 
                             int horaAtual = LocalTime.now().getHour();
                             if (horaAtual >= horas.size()) horaAtual = horas.size() - 1;
 
                             Hora inf = horas.get(horaAtual);
-                            Double probabilidadeChuva = inf.precipprob;
-                            Double umidade = inf.humidity;
+
 
                             String linhaCSV =(
                                             "\nTemperatura: " + inf.temp + ","
-                                            + "\nUmidade: " + umidade+ "%,"
-                                            + "\nProbabilidade de precipitacao: " + probabilidadeChuva + "%,"
+                                            +"\nTemperatura Máxima do dia: " + diaAtual.tempmax + "°C,"
+                                            +"\nTemperatura Mínima do dia: " + diaAtual.tempmin + "°C,"
+                                            + "\nUmidade: " + inf.humidity + "%,"
+                                            + "\nProbabilidade de precipitacao: " + inf.precipprob + "%,"
                                             + "\nVelocidade vento: " + inf.windspeed + "km/h,"
                                             + "\nDirecao vento: " + inf.winddir + ","
-                                            + "\nCondicao do tempo: " + inf.conditions);
+                                            + "\nCondicao do tempo: " + inf.conditions
+                                            );
 
                             System.out.println("Clima agora (" + horaAtual + "hr): " + linhaCSV);
 

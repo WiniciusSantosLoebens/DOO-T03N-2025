@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Aula12 {
+public class Atvaula12 {
 
     private static final String API_KEY = "ACGJ9WSEG9H2M32Z9YGUK2LE5";
     private static final String URL_API = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";

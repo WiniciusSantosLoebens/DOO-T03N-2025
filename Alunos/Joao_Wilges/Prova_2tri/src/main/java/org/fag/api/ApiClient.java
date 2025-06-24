@@ -20,7 +20,7 @@ public class ApiClient {
                         return response.body();
                 } catch (IOException e) {
                         // Recebe o erro e informa
-                        throw new RuntimeException("Erro na resposta da API: " + e.getMessage(), e);
+                        throw new RuntimeException("Erro na resposta da API - Verifique sua internet");
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

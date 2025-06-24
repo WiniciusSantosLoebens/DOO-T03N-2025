@@ -86,7 +86,8 @@ public class UserInterface {
                 System.out.println("\nSéries encontradas:");
                 for (int i = 0; i < foundSeries.size(); i++) {
                     Serie s = foundSeries.get(i);
-                    System.out.println((i + 1) + ". " + s.getNome() + " (ID: " + s.getId() + ") - " + s.getDataEstreia());
+                    System.out.println(s);
+                    //System.out.println((i + 1) + ". " + s.getNome() + " (ID: " + s.getId() + ") - " + s.getDataEstreia());
                 }
                 return foundSeries;
             }

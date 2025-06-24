@@ -32,7 +32,7 @@ public class DataManager {
             try {
                 System.out.println("Carregando dados de: " + DATA_FILE);
                 return objectMapper.readValue(file, AppData.class);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 System.err.println("Erro ao carregar dados: " + e.getMessage());
                 e.printStackTrace();
                 return new AppData(); // Retorna um objeto vazio em caso de erro de leitura

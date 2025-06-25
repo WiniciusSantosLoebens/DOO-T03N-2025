@@ -89,7 +89,7 @@ public class Main {
                 return foundSeries;
             }
         } catch (Exception e) {
-            System.err.println("Erro ao buscar séries: " + e.getMessage());
+            System.err.println("Erro ao buscar séries, verifique sua conexão ou aguarde alguns instantes1: " + e.getMessage());
             return Collections.emptyList();
         }
     }

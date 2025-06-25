@@ -8,8 +8,6 @@ import java.net.http.HttpResponse;
 public class ApiClient {
         private String jsonData;
 
-        // Para implementar: APIResponse resposta = new APIResponse("https://api.tvmaze.com/search/shows?q={query}");
-
         public static String searchSeriesByName(String url) {
                 try {
                         HttpClient client = HttpClient.newHttpClient();

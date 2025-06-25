@@ -10,6 +10,6 @@ public class SerieRatingComparator implements Comparator<Serie> {
         Double rating1 = (s1 != null && s1.getNotaGeral() != null) ? s1.getNotaGeral() : 0;
         Double rating2 = (s2 != null && s2.getNotaGeral() != null) ? s2.getNotaGeral() : 0;
 
-        return rating1.compareTo(rating2);
+        return rating2.compareTo(rating1);
     }
 }

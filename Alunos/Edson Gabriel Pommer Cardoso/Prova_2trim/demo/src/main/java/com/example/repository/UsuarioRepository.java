@@ -1,3 +1,7 @@
+//Le e grava dados de usuários em arquivos JSON
+//Lista usuários cadastrados
+//Verifica se o usuário existe
+
 package com.example.repository;
 
 import com.example.model.DadosUsuario;

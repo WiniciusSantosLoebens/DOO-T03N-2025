@@ -1,3 +1,7 @@
+//Autenticação do usuário
+//Exibe menu principal
+//Chama serviços conforme opção escolhida
+
 package com.example.controller;
 
 import com.example.model.DadosUsuario;

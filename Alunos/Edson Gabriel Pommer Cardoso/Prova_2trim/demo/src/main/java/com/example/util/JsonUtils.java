@@ -1,3 +1,11 @@
+/*Extrai objetos e campos específicos (ex: "name":"...)
+
+Trata listas simples (gêneros)
+
+Extrai nome da emissora
+
+Retorna valores opcionais para campos numéricos */
+
 package com.example.util;
 
 import java.util.Optional;

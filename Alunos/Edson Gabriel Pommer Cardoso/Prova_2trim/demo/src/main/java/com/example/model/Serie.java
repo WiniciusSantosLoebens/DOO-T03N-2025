@@ -1,3 +1,7 @@
+//Atributos nome, idioma, generos, nota, estado, dataEstreia, dataFim e emissora
+//Equals e hashcode para evitar duplicação de séries
+//Exibe dados
+
 package com.example.model;
 
 import java.io.Serializable;
@@ -34,7 +38,6 @@ public class Serie implements Serializable {
     public String getDataFim()     { return dataFim; }
     public String getEmissora()    { return emissora; }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Serie)) return false;
@@ -42,12 +45,10 @@ public class Serie implements Serializable {
         return nome.equalsIgnoreCase(serie.nome);
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(nome.toLowerCase());
     }
 
-    @Override
     public String toString() {
         return "Nome: " + nome + " - Idioma: " + idioma + ", Gêneros: " + generos + ", Nota: " + nota + ", Estado: " + estado + ", Estreia: " + dataEstreia + ", Fim: " + dataFim + ", Emissora: " + emissora;
     }

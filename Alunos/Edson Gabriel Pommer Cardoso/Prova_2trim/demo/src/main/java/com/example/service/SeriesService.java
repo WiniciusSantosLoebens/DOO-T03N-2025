@@ -1,3 +1,10 @@
+//Constrói URL para pesquisar por nome
+//Faz requisição TVmaze
+//Extrai dados do JSON
+//Pergunta em qual lista adicionar a série
+
+
+
 package com.example.service;
 
 import com.example.model.DadosUsuario;

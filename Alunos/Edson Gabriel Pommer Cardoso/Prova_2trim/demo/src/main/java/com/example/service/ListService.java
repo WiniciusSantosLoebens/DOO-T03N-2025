@@ -1,3 +1,7 @@
+//Exibe, remove, move e ordena séries em listas específicas
+//Recebe o objeto DadosUsuario e manipula suas listas
+
+
 package com.example.service;
 
 import com.example.model.DadosUsuario;

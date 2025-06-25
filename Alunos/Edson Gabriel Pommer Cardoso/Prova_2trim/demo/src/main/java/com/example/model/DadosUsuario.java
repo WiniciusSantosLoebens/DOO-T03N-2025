@@ -1,3 +1,7 @@
+//Armazena o nome do usuário
+//Contém as listas
+
+
 package com.example.model;
 
 import java.io.Serializable;

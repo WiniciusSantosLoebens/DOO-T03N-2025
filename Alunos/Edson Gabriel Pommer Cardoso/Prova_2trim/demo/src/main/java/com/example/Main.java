@@ -1,3 +1,5 @@
+//Inicia o programa
+
 package com.example;
 
 import com.example.controller.AppController;
